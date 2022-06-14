@@ -25,10 +25,11 @@ export default function PizzaBlock({title, price=300, imageUrl, sizes, types}) {
                 <ul>
                     {types.map(typeId => (
                         <li
+                            key={typeId}
                             className={activeType === typeId ? "active" : ""}
-                            onClick={() => setActiveType(typeId)}
-                        >
-                            {typeNames[typeId]}</li>
+                            onClick={() => setActiveType(typeId)}>
+                            {typeNames[typeId]}
+                        </li>
                     )
                     )}
                 </ul>

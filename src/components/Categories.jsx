@@ -21,13 +21,15 @@ function Categories() {
         <div className="categories">
             <ul>
                 {
-                  categories.map((pizzaCategory, i) => {
-                      return (<>
-                          <li onClick={() => onClickCategory(i)} className={activeIndex === i ? "active" : ""}>{pizzaCategory}
+                  categories.map((pizzaCategory, i) => (
+                          <li
+                              key={i}
+                              onClick={() => onClickCategory(i)}
+                              className={activeIndex === i ? "active" : ""}>
+                              {pizzaCategory}
                           </li>
-                        </>
-                      )
-                  })
+                    )
+                  )
                 }
             </ul>
         </div>

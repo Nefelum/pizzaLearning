@@ -10,7 +10,6 @@ function Sort() {
         setSelected(i)
         setOpen(false)
     }
-    console.log(selected)
 
     return (
         <div className="sort">

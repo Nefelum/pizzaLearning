@@ -1,13 +1,20 @@
 import React, {useState} from 'react';
 
-function Sort() {
+function Sort({value, onClickSort}) {
+// function Sort() {
     const [open, setOpen] = useState(false)
-    const [selected, setSelected] = useState(0)
-    const sortList = ['популярности', 'цене', 'алфавиту']
-    const sortName = sortList[selected]
+    const sortList = [
+            { name: 'популярности (DESC)',  sortProperty: 'rating' },
+            { name: 'популярности (ASC)',  sortProperty: '-rating' },
+            { name: 'цене (DESC)',  sortProperty: 'price' },
+            { name: 'цене (ASC)',  sortProperty: '-price' },
+            { name: 'алфавиту (DESC)',  sortProperty: 'title' },
+            { name: 'алфавиту (ASC)',  sortProperty: '-title' },
+        ]
+    // const [selected, setSelected] = useState(0)
 
     const onClickSortList = (i) => {
-        setSelected(i)
+        onClickSort(i)
         setOpen(false)
     }
 
@@ -28,7 +35,7 @@ function Sort() {
                 </svg>
                 <b>Сортировка по:</b>
                 {/*<span onClick={() => onClickSort(open)}>популярности</span>*/}
-                <span onClick={() => setOpen(!open)}>{sortName}</span>
+                <span onClick={() => setOpen(!open)}>{value.name}</span>
             </div>
             {
                 open && (
@@ -37,11 +44,10 @@ function Sort() {
                             {
                                 sortList.map((sort, i) => (
                                     <li
-                                        key={sort}
-                                        onClick={() => onClickSortList(i)}
-                                        className={selected === i ? 'active' : ''}
-                                       >
-                                        {sort}
+                                        key={i}
+                                        onClick={() => onClickSortList(sort)}
+                                        className={value.sortProperty === sort.sortProperty ? 'active' : ''}>
+                                        {sort.name}
                                     </li>
                                 ))
                             }

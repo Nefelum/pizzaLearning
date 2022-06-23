@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import styles from './Search.module.scss'
 import close from '../../assets/img/4115230_cancel_close_delete_icon.svg'
+import {SearchContext} from "../../App";
 
-export default function Search ({searchValue, setSearchValue}) {
+export default function Search () {
+    const { searchValue, setSearchValue} = useContext(SearchContext)
+    // const context = useContext(contextValue);
     return (
         <div className={styles.root}>
             <svg

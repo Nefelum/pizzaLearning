@@ -10,11 +10,11 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Cart from "./pages/Cart"
 import {createContext, useState} from "react";
+// useDispatch
 
 export const SearchContext = createContext(undefined);
 
 function App() {
-
     const [searchValue, setSearchValue] = useState('')
     return (
         <SearchContext.Provider value={{searchValue, setSearchValue}}>
